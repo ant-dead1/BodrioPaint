@@ -1,0 +1,174 @@
+body {
+    background-color: #222;
+}
+
+h2 {
+    color: antiquewhite;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    transition: 1s;
+}
+
+h1 {
+    color: antiquewhite;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    display: flex;
+    font-size: 60px;
+    transition: 1s;
+}
+
+#the-columns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    justify-content: center;
+}
+
+#colors-column1 {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+}
+
+#colors-column2 {
+    display: flex;
+    flex-direction: column;
+}
+
+canvas {
+    background-color: #b9c0b6;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 3px;
+}
+
+.color-cube {
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    border-color: #496949;
+    border-style: solid;
+    transition: 400ms;
+}
+
+.color-cube:hover {
+    border-color: #b8ff11;
+    border-width: 5px;
+}
+
+.color-cube:active {
+    transition: 200ms;
+    background-color: #b8ff11;
+    border-color: #b8ff11;
+    border-width: 10px;
+}
+
+#red {
+    background-color: red;
+}
+
+#yellow {
+    background-color: rgb(255, 187, 0);
+}
+
+#green {
+    background-color: #11ff58;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#pink {
+    background-color: pink;
+}
+
+#nigger {
+    background-color: black;
+}
+
+#orange {   
+    background-color: orange;
+}
+
+#blank {
+    background-color: aliceblue;
+}
+
+#celeste {
+    background-color: aqua;
+}
+
+#brown {
+    background-color: rgb(81, 53, 27);
+}
+
+#violet {
+    background-color: purple;
+}
+
+#gray {
+    background-color: rgb(198, 193, 193);
+}
+
+#skin {
+    background-color: rgb(227, 192, 150);
+}
+
+#darkred {
+    background-color: rgb(74, 27, 18);
+}
+
+#violet-hair {
+    background-color: #4e3f83;
+}
+
+#blank-clothe {
+    background-color: rgb(211, 202, 190);
+}
+
+#cyan {
+    background-color: rgb(121, 188, 165);
+}
+
+
+#toolbar-column2 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.toolbar-button {
+    height: 70px;
+    width: 80px;
+    margin-top: 4px;
+    border-radius: 20px;
+}
+
+.toolbar-button:hover {
+    border-color: #595c51;
+    border-width: 5px;
+    border-style: solid;
+    transition: 400ms;
+}
+
+.toolbar-button:active {
+    transition: 200ms;
+    background-color: #b8ff11;
+    border-color: #b8ff11;
+    border-width: 10px;
+    border-style: solid;
+
+}
+
+#width-draw {
+    width: 80px;
+}
+
+p {
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+}

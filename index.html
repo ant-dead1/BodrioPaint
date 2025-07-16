@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>|- BodrioPaint -|</h1>
+    <h2 id="coords">(-u-)</h2>
+
+    <div id="the-columns">
+
+        <div id="colors-column1">
+            <button id="red" class="color-cube"></button>
+            <button id="yellow" class="color-cube"></button>
+            <button id="green" class="color-cube"></button>
+            <button id="blue" class="color-cube"></button>
+            <button id="pink" class="color-cube"></button>
+            <button id="nigger" class="color-cube"></button>
+            <button id="orange" class="color-cube"></button>
+            <button id="blank" class="color-cube"></button>
+            <button id="celeste" class="color-cube"></button>
+            <button id="brown" class="color-cube"></button>
+            <button id="violet" class="color-cube"></button>
+            <button id="gray" class="color-cube"></button>
+            <button id="skin" class="color-cube"></button>
+            <button id="darkred" class="color-cube"></button>
+            <button id="violet-hair" class="color-cube"></button>
+            <button id="blank-clothe" class="color-cube"></button>
+            <button id="cyan" class="color-cube"></button>
+        </div>
+
+
+        <canvas width="800" height="600" id="the-canvas"></canvas>
+
+        <div id="toolbar-column2">
+            <button id="simple-draw" class="toolbar-button">Lapiz Digital</button>
+            <button id="airbrush" class="toolbar-button">Lapiz raro lol</button>
+            <button id="puntitos" class="toolbar-button">Puntitos :D</button>
+
+            <p>Ancho de lapiz</p>
+            <input type="range" id="width-draw" min="1" max="20" step="0.01" value="0.5">
+        </div>
+
+    </div>
+
+
+</body>
+
+<script defer>
+    // ------Canvas------
+    const cvID = document.getElementById("the-canvas");
+    const canvas = cvID.getContext('2d');
+
+    const coords_text = document.getElementById("coords"); 
+
+    const simple_draw = document.getElementById("simple-draw");
+    const strange_draw = document.getElementById("strange-draw");
+    const puntitos = document.getElementById("puntitos");
+
+    const width_slider = document.getElementById("width-draw");
+
+    let isDrawing = false;
+    let draw_mode_select = 'simple';
+
+    const colors_column = [
+        document.getElementById("red"),
+        document.getElementById("yellow"),
+        document.getElementById("green"),
+        document.getElementById("blue"),
+        document.getElementById("pink"),
+        document.getElementById("nigger"),
+        document.getElementById("orange"),
+        document.getElementById("blank"),
+        document.getElementById("celeste"),
+        document.getElementById("brown"),
+        document.getElementById("violet"),
+        document.getElementById("gray"),
+        document.getElementById("skin"),
+        document.getElementById("darkred"),
+        document.getElementById("violet-hair"),
+        document.getElementById("blank-clothe"),
+        document.getElementById("cyan")
+    ];
+
+    // Draw functions
+
+    function simple_draw_function(x, y) {
+        canvas.lineTo(x, y);
+        canvas.lineCap = 'round';
+        canvas.stroke();
+    }
+
+    function strange_draw_function(x, y) {
+        canvas.arc(x, y, 1, 0, Math.PI * 2);
+        canvas.fillStyle = "rgba(0, 0, 0, 0.05)";
+        canvas.fill();
+
+
+    }
+
+    function puntitos_draw_function(x, y) {
+        canvas.setLineDash([5, 15]);
+        canvas.lineTo(x, y);
+        canvas.lineCap = 'round';
+        canvas.stroke();
+    }
+
+    function draw(mouse) {
+
+        if  (isDrawing===true)
+        {
+            const rect = cvID.getBoundingClientRect(); 
+            const x = mouse.clientX - rect.left; 
+            const y = mouse.clientY - rect.top;
+
+
+            switch (draw_mode_select)
+            {
+                case 'simple' :
+                    simple_draw_function(x, y);
+                    break;
+                case 'strange' :
+                    strange_draw_function(x, y);
+                    break;
+                case 'puntitos' :
+                    puntitos_draw_function(x, y);
+            }
+            
+            
+            coords_text.textContent = `X:(${Math.floor(x)}) Y:(${Math.floor(y)})`;
+        }
+
+    }
+
+    function drawSwitch(mouse) {
+
+        const rect = cvID.getBoundingClientRect(); 
+        const x = mouse.clientX - rect.left; 
+        const y = mouse.clientY - rect.top;
+
+        isDrawing=true;
+        canvas.beginPath();
+        canvas.moveTo(x, y);
+
+
+    }
+
+    function drawSwitchStop(mouse)
+    {
+        isDrawing=false;
+        canvas.closePath();
+    }
+
+
+
+
+    // All calls a functions
+
+    cvID.addEventListener("mousedown", drawSwitch);
+    cvID.addEventListener("mousemove", draw);
+    cvID.addEventListener("mouseleave", drawSwitchStop);
+    cvID.addEventListener("mouseup", drawSwitchStop);
+
+
+
+    width_slider.addEventListener("input", () => {
+        canvas.lineWidth = width_slider.value;
+    });
+
+    for (let i = 0; i < colors_column.length; i++) {
+        colors_column[i].addEventListener("click", function() {
+            const color_select = getComputedStyle(colors_column[i]).backgroundColor;
+            canvas.strokeStyle = color_select;
+        });  
+    }
+    
+    simple_draw.addEventListener("click", () => {
+        draw_mode_select='simple';
+    });
+
+    airbrush.addEventListener("click", () => {
+        draw_mode_select='strange';
+    });
+
+    puntitos.addEventListener("click", () => {
+        draw_mode_select='puntitos';
+    });
+    
+
+</script>
+
+
+</html>
