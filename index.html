@@ -52,7 +52,6 @@
 </body>
 
 <script defer>
-    // ------Canvas------
     const cvID = document.getElementById("the-canvas");
     const canvas = cvID.getContext('2d');
 
@@ -86,8 +85,6 @@
         document.getElementById("blank-clothe"),
         document.getElementById("cyan")
     ];
-
-    // Draw functions
 
     function simple_draw_function(x, y) {
         canvas.lineTo(x, y);
@@ -157,9 +154,6 @@
     }
 
 
-
-
-    // All calls a functions
 
     cvID.addEventListener("mousedown", drawSwitch);
     cvID.addEventListener("mousemove", draw);
